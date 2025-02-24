@@ -138,7 +138,7 @@
         android:layout_marginTop="55dp"
         android:layout_marginBottom="128dp"
         android:background="@drawable/round"
-        android:text="Button"
+        android:text="Sign Up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword2"
         app:layout_constraintStart_toStartOf="@+id/editTextTextPassword2"
