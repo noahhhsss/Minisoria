@@ -9,17 +9,17 @@
     <item
         android:id="@+id/Home"
         android:icon="@drawable/home"
-        android:title="@string/title_home"/>
+        android:title="@string/title_Home" />
 
     <item
         android:id="@+id/Contact"
         android:icon="@drawable/contact"
-        android:title="@string/title_contact"/>
+        android:title="@string/title_Contact"/>
 
     <item
         android:id="@+id/Order"
         android:icon="@drawable/order1"
-        android:title="@string/title_order"/>
+        android:title="@string/title_Order"/>
 
 
 </group>
@@ -29,7 +29,7 @@
             <item
                 android:id="@+id/Logout"
                 android:icon="@drawable/logout"
-                android:title="@string/title_logout" />
+                android:title="@string/title_Logout" />
         </menu>
     </item>
 </menu>

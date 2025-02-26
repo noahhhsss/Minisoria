@@ -12,11 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Minisoria"
         tools:targetApi="31" >
-        <activity
-            android:name=".orderHis"
-            android:exported="false" />
         <activity android:name=".Dashboard" />
-        <activity android:name=".Dashboard" />
+        <activity android:name=".Dashboard"
+            tools:ignore="DuplicateActivity" />
         <activity android:name=".SignUp" />
         <activity
             android:name=".MainActivity"

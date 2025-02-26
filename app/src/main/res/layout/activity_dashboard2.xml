@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:id="@+id/drawer_layout"
+    tools:openDrawer="start"
+    tools:context=".Dashboard">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Toolbar Wrapper for Proper Positioning -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp">
+
+            <!-- Toolbar -->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/accecories"
+                android:clipToOutline="true"
+                android:elevation="4dp"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:layout_constraintTop_toBottomOf="@id/toolbar"
+                app:title=""/>
+
+            <!-- App Name (Minisoria) -->
+            <TextView
+                android:id="@+id/minisoriaText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Minisoria"
+                android:textSize="16sp"
+                android:textColor="@android:color/white"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="100dp"
+                android:elevation="10dp"
+                android:background="@android:color/transparent"/>
+
+            <!-- Title (CATEGORIES) -->
+            <TextView
+                android:id="@+id/categoriesTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CATEGORIES"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:fontFamily="sans-serif-black"
+                android:layout_marginStart="40dp"
+                android:layout_below="@id/minisoriaText"
+                android:layout_marginTop="0dp"
+                android:elevation="10dp"
+                android:background="@android:color/transparent"/>
+
+            <!-- Cart Icon Positioned at the Top Right -->
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="40dp"
+                android:layout_alignParentEnd="true"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:elevation="10dp"
+                app:srcCompat="@drawable/cart"
+                app:tint="@color/white"/>
+
+            <!-- Category Tabs -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_alignParentBottom="true"
+                android:elevation="10dp">
+
+                <TextView
+                    android:id="@+id/accessoriesTab"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="ACCESSORIES"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@android:color/white"/>
+
+                <TextView
+                    android:id="@+id/carituresTab"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="CARITURES"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:textColor="@android:color/white"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+      >
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/activity_sidebar"
+        app:menu="@menu/nav_menu"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>
