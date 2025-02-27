@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             String password = passwordEditText.getText().toString();
 
             if(username.isEmpty() || password.isEmpty()){
-                Toast.makeText(MainActivity.this, "Please fill in both fields", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Please fill in both fields.", Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(MainActivity.this, "Login succesful",Toast.LENGTH_SHORT).show();
 
