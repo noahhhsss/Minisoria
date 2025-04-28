@@ -7,7 +7,12 @@
     <string name="title_Home">Home</string>
     <string name="title_Contact">Contact</string>
     <string name="title_Order">Order</string>
+    <string name="title_Account">Account</string>
     <string name="title_Logout">Logout</string>
     <string name="Open">Open</string>
     <string name="Close">Close</string>
+    
+    <string-array name="order">
+        <item>ada</item>
+    </string-array>
 </resources>

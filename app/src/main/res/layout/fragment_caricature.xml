@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".caricature">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="1dp">
+
+            <!-- Row 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="20dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="20dp">
+
+                    <FrameLayout
+                        android:layout_width="170dp"
+                        android:layout_height="200dp">
+
+                        <ImageView
+                            android:id="@+id/product"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:srcCompat="@drawable/product" />
+
+                        <ImageView
+                            android:id="@+id/accessories1"
+                            android:layout_width="165dp"
+                            android:layout_height="165dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="3dp"
+                            android:padding="5dp"
+                            app:srcCompat="@drawable/caricature"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="00.0"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            android:layout_marginTop="170dp"
+                            android:layout_marginLeft="70dp"/>
+                    </FrameLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Row 2 -->
+
+            <!-- Row 3 -->
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

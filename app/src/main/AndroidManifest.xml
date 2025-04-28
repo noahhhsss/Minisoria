@@ -15,7 +15,30 @@
         <activity android:name=".Dashboard" />
         <activity android:name=".Dashboard"
             tools:ignore="DuplicateActivity" />
+        <activity android:name=".Dashboardwdrawer"/>
+        <activity android:name=".product"/>
+        <activity android:name=".Addtocart"/>
+        <activity android:name=".Checkout"/>
+        <activity android:name=".Productbracelet"/>
+        <activity android:name=".Producttotebag"/>
+        <activity android:name=".Productkeychain"/>
+        <activity android:name=".Producttoys"/>
+        <activity android:name=".Productclothes"/>
+        <activity android:name=".productcaricature"/>
+        <activity android:name=".Productthickmilo"/>
+        <activity android:name=".Productsnowflake"/>
+        <activity android:name=".Drawercontactus"/>
+        <activity android:name=".Drawerorder"/>
+
         <activity android:name=".SignUp" />
+        <activity android:name=".Splashscreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
