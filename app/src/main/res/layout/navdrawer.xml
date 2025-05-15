@@ -27,7 +27,7 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Noaqim Nasser J. Al Rawahi"
+            android:text="Josh princess"
             android:layout_marginTop="10dp"
             android:textSize="20dp"
             android:textColor="@color/white"
