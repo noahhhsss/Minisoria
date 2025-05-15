@@ -49,7 +49,7 @@
             android:ems="10"
             android:inputType="text"
             android:padding="15dp"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/Password"
@@ -61,19 +61,25 @@
             android:layout_marginTop="20dp"
             android:textColor="@color/black"/>
 
-        <EditText
-            android:id="@+id/editTextTextPassword"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/border4"
             android:layout_width="342dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/round"
-            android:backgroundTint="#d2d2db"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:padding="15dp"
-            android:textColor="@color/white" />
+            android:layout_marginStart="32dp"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordsignin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:padding="15dp"
+                android:background="@drawable/round"
+                android:backgroundTint="#d2d2db"
+                android:textColor="@color/black"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"

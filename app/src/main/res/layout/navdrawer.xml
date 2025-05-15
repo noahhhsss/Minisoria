@@ -77,7 +77,7 @@
             android:textStyle="bold"
             android:textSize="20sp"
             android:text="Account"
-            android:drawableLeft="@drawable/home"
+            android:drawableLeft="@drawable/acc"
             android:drawablePadding="8dp"/>
 
     </LinearLayout>
@@ -100,7 +100,7 @@
             android:textStyle="bold"
             android:textSize="20sp"
             android:text="Notification"
-            android:drawableLeft="@drawable/home"
+            android:drawableLeft="@drawable/notifi"
             android:drawablePadding="8dp"/>
 
     </LinearLayout>
@@ -123,7 +123,7 @@
             android:textStyle="bold"
             android:textSize="20sp"
             android:text="Order"
-            android:drawableLeft="@drawable/home"
+            android:drawableLeft="@drawable/order"
             android:drawablePadding="8dp"/>
 
     </LinearLayout>
@@ -146,7 +146,7 @@
             android:textStyle="bold"
             android:textSize="20sp"
             android:text="Contact us"
-            android:drawableLeft="@drawable/home"
+            android:drawableLeft="@drawable/contact"
             android:drawablePadding="8dp"/>
 
     </LinearLayout>
@@ -169,7 +169,7 @@
             android:textStyle="bold"
             android:textSize="20sp"
             android:text="Terms and condition"
-            android:drawableLeft="@drawable/home"
+            android:drawableLeft="@drawable/terms"
             android:drawablePadding="8dp"/>
 
     </LinearLayout>
@@ -182,7 +182,7 @@
  </View>
 
     <LinearLayout
-        android:id="@+id/logout"
+        android:id="@+id/logoutt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -200,7 +200,7 @@
             android:textStyle="bold"
             android:textSize="20sp"
             android:text="Log out"
-            android:drawableLeft="@drawable/home"
+            android:drawableLeft="@drawable/backbton"
             android:drawablePadding="8dp"/>
 
     </LinearLayout>

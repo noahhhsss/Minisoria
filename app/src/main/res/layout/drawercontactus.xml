@@ -73,7 +73,7 @@
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="300dp"
+                android:layout_width="312dp"
                 android:layout_height="70dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="50dp"
@@ -82,7 +82,7 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/phone"
+                android:background="@drawable/tiktok"
                 android:layout_marginTop="35dp"
                 android:layout_marginLeft="70dp"/>
 
@@ -91,14 +91,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="35dp"
-                android:layout_marginStart="120dp"
+                android:layout_marginStart="130dp"
                 android:textSize="25dp"
                 android:textColor="@color/black"
-                android:text="+(917) 555-6832"/>
+                android:text="mini_soria"/>
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="300dp"
+                android:layout_width="312dp"
                 android:layout_height="70dp"
                 android:layout_marginTop="110dp"
                 android:layout_marginStart="50dp"
@@ -117,14 +117,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="130dp"
-                android:layout_marginStart="130dp"
+                android:layout_marginStart="125dp"
                 android:textSize="20dp"
                 android:textColor="@color/black"
-                android:text="Minisoria@gmail.com"/>
+                android:text="minisoria393@gmail.com"/>
 
             <ImageView
                 android:id="@+id/imageView4"
-                android:layout_width="300dp"
+                android:layout_width="312dp"
                 android:layout_height="70dp"
                 android:layout_marginTop="200dp"
                 android:layout_marginStart="50dp"
@@ -143,14 +143,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="220dp"
-                android:layout_marginStart="115dp"
+                android:layout_marginStart="125dp"
                 android:textSize="19dp"
                 android:textColor="@color/black"
+                android:textStyle=""
                 android:text="Minisoria@facebook.com"/>
 
             <ImageView
                 android:id="@+id/imageView5"
-                android:layout_width="300dp"
+                android:layout_width="312dp"
                 android:layout_height="70dp"
                 android:layout_marginTop="290dp"
                 android:layout_marginStart="50dp"
@@ -171,7 +172,7 @@
                 android:layout_marginStart="113dp"
                 android:textSize="19dp"
                 android:textColor="@color/black"
-                android:text="Minisoria@instagram.com"/>
+                android:text="mini_soria@instagram.com"/>
 
 
         </FrameLayout>

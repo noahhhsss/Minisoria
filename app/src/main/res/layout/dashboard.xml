@@ -30,11 +30,11 @@
             <ImageView
                 android:id="@+id/cart"
                 android:layout_width="200dp"
-                android:layout_height="40dp"
+                android:layout_height="50dp"
                 android:layout_marginLeft="200dp"
-                android:layout_marginTop="22dp"
+                android:layout_marginTop="18dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/cart" />
+                app:srcCompat="@drawable/v1" />
 
         </LinearLayout>
 

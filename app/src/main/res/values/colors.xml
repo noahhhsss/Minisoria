@@ -6,4 +6,6 @@
     <color name="color_btn">#324A64</color>
     <color name="addtocrtcolor">#2C2D2D</color>
     <color name="bg">#008080</color>
+    <color name="red">#FF0000</color>
+    <color name="main">#0e5fa7</color>
 </resources>
