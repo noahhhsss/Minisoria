@@ -3,43 +3,85 @@ package com.example.minisoria;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class product extends AppCompatActivity {
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
-   private   ImageView cart, backbtn;
+public class product extends AppCompatActivity {
+    ImageButton backbtn;
+
+    Button openBottomSheetButton;
+    int quantity = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.product);
 
-        cart = findViewById(R.id.addtocart);
-        backbtn = findViewById(R.id.backbtn);
+        backbtn = findViewById(R.id.backButton);
+
+        openBottomSheetButton = findViewById(R.id.buyNowButton);
 
 
-        cart.setOnClickListener(new View.OnClickListener() {
+        openBottomSheetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(product.this, Addtocart.class);
-                startActivity(i);
+                showBottomSheet();
             }
         });
-
-
-
-
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(product.this, Dashboardwdrawer.class);
-                startActivity(i);
+                finish();
+            }
+        });
+    }
+    private void showBottomSheet() {
+        View view = LayoutInflater.from(this).inflate(R.layout.productpopup, null);
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+        bottomSheetDialog.setContentView(view);
+
+        TextView quantityText = view.findViewById(R.id.quantityText);
+        TextView decreaseBtn = view.findViewById(R.id.decreaseButton);
+        TextView increaseBtn = view.findViewById(R.id.increaseButton);
+        Button buyNow = view.findViewById(R.id.buyNowButton);
+
+        quantityText.setText(String.valueOf(quantity));
+
+        decreaseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (quantity > 1) {
+                    quantity--;
+                    quantityText.setText(String.valueOf(quantity));
+                }
             }
         });
 
+        increaseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                quantity++;
+                quantityText.setText(String.valueOf(quantity));
+            }
+        });
+
+        buyNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomSheetDialog.dismiss();
+                // handle buy logic here
+            }
+        });
+
+        bottomSheetDialog.show();
     }
 }
