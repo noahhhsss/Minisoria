@@ -26,7 +26,7 @@ public class product extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product);
 
-        backbtn = findViewById(R.id.backButton);
+        backbtn = findViewById(R.id.backbtn);
 
         openBottomSheetButton = findViewById(R.id.buyNowButton);
 

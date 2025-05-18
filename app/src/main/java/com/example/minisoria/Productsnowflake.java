@@ -19,17 +19,11 @@ public class Productsnowflake extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.productsnowflake);
 
-        cart = findViewById(R.id.addtocart);
+
         backbtn = findViewById(R.id.backbtn);
 
 
-        cart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Productsnowflake.this, Addtocart.class);
-                startActivity(i);
-            }
-        });
+
 
 
         backbtn.setOnClickListener(new View.OnClickListener() {

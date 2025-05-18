@@ -17,17 +17,11 @@ public class Productkeychain extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.productkeychain);
 
-        cart = findViewById(R.id.addtocart);
+
         backbtn = findViewById(R.id.backbtn);
 
 
-        cart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Productkeychain.this, Addtocart.class);
-                startActivity(i);
-            }
-        });
+
 
 
         backbtn.setOnClickListener(new View.OnClickListener() {

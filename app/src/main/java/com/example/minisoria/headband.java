@@ -13,10 +13,8 @@ public class headband extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product);
 
-        ImageView Backbtn,Addtocart;
+        ImageView Backbtn;
 
-
-        Addtocart = findViewById(R.id.addtocart);
         Backbtn = findViewById(R.id.backbtn);
 
         Backbtn.setOnClickListener(new View.OnClickListener() {
@@ -28,13 +26,6 @@ public class headband extends AppCompatActivity {
         });
 
 
-        Addtocart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(headband.this , Checkout.class );
-                startActivity(intent);
-            }
-        });
 
 
     }

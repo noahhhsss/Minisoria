@@ -34,7 +34,7 @@
                     android:src="@drawable/totebag" />
 
                 <ImageButton
-                    android:id="@+id/backButton"
+                    android:id="@+id/backbtn"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:layout_alignParentStart="true"
@@ -77,22 +77,61 @@
         android:weightSum="3"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <Button
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Message"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#1565C0" />
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="8dp"
+            android:background="@drawable/bluebackbtn"
+            android:layout_marginEnd="4dp"
+            android:clickable="true"
+            android:focusable="true">
 
-        <Button
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/msgg"
+                android:backgroundTint="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Message"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Add to Cart"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#1976D2"
-            android:layout_marginHorizontal="4dp" />
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="8dp"
+            android:background="@drawable/bluebackbtn"
+            android:layout_marginHorizontal="4dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/cart"
+                android:backgroundTint="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add to Cart"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:gravity="center" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/buyNowButton"
@@ -102,9 +141,11 @@
             android:text="Buy Now"
             android:textColor="#FFFFFF"
             android:backgroundTint="#000000"
-            app:iconGravity="top"
-            app:iconPadding="4dp"
-            app:iconTint="@android:color/white" />
+            android:textStyle="bold"
+            android:padding="20dp"
+            android:background="@drawable/bluebackbtn"
+            android:layout_marginStart="4dp" />
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

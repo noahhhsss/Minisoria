@@ -18,17 +18,10 @@ public class Producttoys extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.producttoys);
 
-        cart = findViewById(R.id.addtocart);
         backbtn = findViewById(R.id.backbtn);
 
 
-        cart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Producttoys.this, Addtocart.class);
-                startActivity(i);
-            }
-        });
+
 
 
         backbtn.setOnClickListener(new View.OnClickListener() {
