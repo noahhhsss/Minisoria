@@ -55,17 +55,27 @@
 
                         <ImageView
                             android:id="@+id/accessories1"
-                            android:layout_width="165dp"
-                            android:layout_height="165dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginLeft="3dp"
+                            android:layout_width="150dp"
+                            android:layout_height="140dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginLeft="9dp"
                             android:padding="5dp"
-                            app:srcCompat="@drawable/caricature"/>
+                            android:background="@drawable/caricature"/>
+                        <TextView
+                            android:id="@+id/topLabel1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Caricature"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            android:layout_gravity="top|center_horizontal" />
+
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="00.0"
+                            android:text="₱5.00"
                             android:textSize="20dp"
                             android:textStyle="bold"
                             android:textColor="#FFFFFF"

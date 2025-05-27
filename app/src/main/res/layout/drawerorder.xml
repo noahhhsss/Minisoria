@@ -17,13 +17,14 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="115dp"
                 android:background="@drawable/roundbluedashboard"/>
 
             <ImageView
                 android:id="@+id/menubtn"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginRight="300dp"
                 app:srcCompat="@drawable/drawer"/>
 
@@ -34,7 +35,7 @@
                 android:layout_marginLeft="100dp"
                 android:textSize="30dp"
                 android:textColor="@color/white"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="25dp"
                 android:textStyle="bold"
                 android:text="My Purchase"/>
 
@@ -45,9 +46,9 @@
                 android:layout_marginLeft="70dp"
                 android:textSize="25dp"
                 android:textColor="@color/white"
-                android:layout_marginTop="65dp"
+                android:layout_marginTop="75dp"
                 android:textStyle="bold"
-                android:text="To Recieve"/>
+                android:text="To Pay"/>
 
             <TextView
                 android:id="@+id/complete"
@@ -56,14 +57,11 @@
                 android:layout_marginLeft="250dp"
                 android:textSize="25dp"
                 android:textColor="@color/white"
-                android:layout_marginTop="65dp"
+                android:layout_marginTop="75dp"
                 android:textStyle="bold"
                 android:text="Completed"/>
 
         </FrameLayout>
-
-
-
     </LinearLayout>
 
     <ScrollView

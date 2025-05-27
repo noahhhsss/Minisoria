@@ -9,17 +9,17 @@
     <LinearLayout
         android:id="@+id/termsContentLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="70dp"
         android:orientation="vertical">
 
         <!-- Top Bar -->
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp">
+            android:layout_height="70dp">
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="70dp"
                 android:background="@drawable/roundbluedashboard" />
 
             <ImageView
@@ -27,6 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
                 android:layout_marginRight="300dp"
+                android:layout_marginTop="10dp"
                 android:layout_gravity="center_vertical"
                 app:srcCompat="@drawable/drawer" />
 
@@ -35,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="100dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="30dp"
                 android:text="Terms and Conditions"
                 android:textColor="@color/white"
                 android:textSize="20sp"

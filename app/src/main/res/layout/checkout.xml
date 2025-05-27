@@ -25,7 +25,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="23dp"
             android:background="@drawable/backbton"
-            android:padding="8dp" />
+            android:padding="8dp"/>
 
         <TextView
             android:id="@+id/Mycart"
@@ -139,33 +139,6 @@
                     android:drawableTint="@color/white"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/Paypal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="90dp"
-                    android:text="Paymaya"
-                    android:textColor="@color/white"
-                    android:textSize="24dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="90dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:drawableRight="@drawable/arrowright"
-                    android:textSize="25dp"
-                    android:drawableTint="@color/white"/>
-            </LinearLayout>
         </FrameLayout>
 
         <!-- Order Summary Text -->

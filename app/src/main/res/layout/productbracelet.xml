@@ -31,7 +31,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/totebag" />
+                    android:src="@drawable/bracelet" />
 
                 <ImageButton
                     android:id="@+id/backbtn"
@@ -44,7 +44,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="₱55.00"
+                android:text="₱40.00"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:textColor="#000000" />
@@ -52,7 +52,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tote Bag"
+                android:text="Bracelet"
                 android:textSize="28dp"
                 android:textStyle="italic"
                 android:textColor="#333333"
@@ -61,7 +61,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Made from secondhand denim pants and other clothes designed with fabric scraps. Can be customized to the customer’s requests. Durable and efficient with pockets while being sustainable and flashy. 55 peso each; 65 peso for additional designs."
+                android:text="Available in 3 different packages:
+2 types of beads - Made with 2 choices of beads. 40 peso
+3 types of beads - Made with 3 choices of beads. 45 peso
+Rock beads - Made with assorted rocks. Can only be made catered to the customer's OSFP 4 Temparaments Test result. Beads for this bracelet cannot be chosen as the rocks are assorted. 50 pesos
+Additionals: 5 peso each for charms; 2 peso for each letter (max. of 10 letters)"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="#666666" />
@@ -106,6 +110,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/addtocart"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -134,6 +139,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/buyNowButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

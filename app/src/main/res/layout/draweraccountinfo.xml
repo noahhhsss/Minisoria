@@ -16,20 +16,21 @@
         <!-- Top Bar -->
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp">
+            android:layout_height="70dp">
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="70dp"
                 android:background="@drawable/roundbluedashboard"/>
 
             <ImageView
                 android:id="@+id/menubtn"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginRight="350dp"
-                android:layout_gravity="start|center_vertical"
-                app:srcCompat="@drawable/drawer"/>
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="320dp"
+                android:layout_gravity="start"
+                android:background="@drawable/drawer"/>
 
             <TextView
                 android:id="@+id/textView4"
@@ -37,6 +38,7 @@
                 android:layout_height="wrap_content"
                 android:text="Account Info"
                 android:textSize="24sp"
+                android:layout_marginTop="10dp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:layout_gravity="center"/>

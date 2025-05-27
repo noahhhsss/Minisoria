@@ -14,7 +14,7 @@
         <ImageView
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:src="@drawable/totebag"
+            android:src="@drawable/bracelet"
             android:layout_marginEnd="16dp" />
 
         <LinearLayout
@@ -23,20 +23,15 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="₱55.00"
                 android:textSize="18sp"
+                android:layout_marginTop="20dp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Stock: 24"
-                android:textSize="14sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -49,25 +44,50 @@
         android:textStyle="bold"
         android:layout_marginTop="10dp"/>
 
-    <LinearLayout
+    <RadioGroup
+        android:id="@+id/materialGroup"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <Button
+        <RadioButton
             android:id="@+id/customizeBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/cornerradius"
+            android:padding="12dp"
             android:layout_marginTop="16dp"
-            android:text="Customize" />
+            android:button="@drawable/dropdown"
+            android:text="Package 1"
+            android:textSize="15dp"
+            android:textStyle="bold"/>
 
-        <Button
-            android:id="@+id/customizeButton"
+        <RadioButton
+            android:id="@+id/cusBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/cornerradius"
+            android:padding="12dp"
             android:layout_marginTop="16dp"
-            android:text="Customize" />
-    </LinearLayout>
+            android:layout_marginLeft="2dp"
+            android:button="@drawable/dropdown"
+            android:text="Package 2"
+            android:textSize="15dp"
+            android:textStyle="bold"/>
+
+        <RadioButton
+            android:id="@+id/cusBtn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cornerradius"
+            android:padding="12dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="2dp"
+            android:button="@drawable/dropdown"
+            android:text="Package 3"
+            android:textSize="15dp"
+            android:textStyle="bold"/>
+    </RadioGroup>
 
 
     <LinearLayout

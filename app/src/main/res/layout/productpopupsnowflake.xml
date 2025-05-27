@@ -14,7 +14,7 @@
         <ImageView
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:src="@drawable/totebag"
+            android:background="@drawable/snowflakenougat"
             android:layout_marginEnd="16dp" />
 
         <LinearLayout
@@ -25,48 +25,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="₱55.00"
-                android:textSize="18sp"
+                android:text="₱5.00"
+                android:textSize="20sp"
+                android:layout_marginTop="15dp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Stock: 24"
-                android:textSize="14sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"/>
         </LinearLayout>
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Material"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/customizeBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Customize" />
-
-        <Button
-            android:id="@+id/customizeButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Customize" />
     </LinearLayout>
 
 

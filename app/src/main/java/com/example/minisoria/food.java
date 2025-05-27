@@ -22,14 +22,14 @@ public class food extends Fragment {
 
         ImageView myImageView = view.findViewById(R.id.accessories1);
         ImageView myImageView1 = view.findViewById(R.id.accessories2);
-        myImageView.setOnClickListener(new View.OnClickListener() {
+        myImageView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), Productthickmilo.class);
                 startActivity(i);
             }
         });
-        myImageView1.setOnClickListener(new View.OnClickListener() {
+        myImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), Productsnowflake.class);

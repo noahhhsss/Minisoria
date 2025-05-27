@@ -3,6 +3,7 @@ package com.example.minisoria;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -54,8 +56,19 @@ public class Dashboardwdrawer extends AppCompatActivity {
         logout = findViewById(R.id.logoutt);
         menu = findViewById(R.id.menubtn);
 
-
         FragmentManager fragmentManager = getSupportFragmentManager();
+        TextView usernameText = findViewById(R.id.usersname);
+
+        SharedPreferences userPrefs = getSharedPreferences("user_prefs", MODE_PRIVATE);
+        String username = userPrefs.getString("username", null);
+
+        if (username != null && !username.isEmpty()) {
+            usernameText.setText(username);
+        } else {
+            usernameText.setText("No username found");
+        }
+
+
 
         acc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,6 +136,13 @@ public class Dashboardwdrawer extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Dashboardwdrawer.this, Drawertermsandcondi.class);
+                startActivity(i);
+            }
+        });
+        notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Dashboardwdrawer.this, Drawernotification.class);
                 startActivity(i);
             }
         });

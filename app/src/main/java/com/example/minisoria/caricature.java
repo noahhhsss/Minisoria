@@ -21,6 +21,7 @@ public class caricature extends Fragment {
         View view = inflater.inflate(R.layout.fragment_caricature, container, false);
 
         ImageView myImageView = view.findViewById(R.id.accessories1);
+
         myImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

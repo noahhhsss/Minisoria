@@ -8,4 +8,11 @@
     <color name="bg">#008080</color>
     <color name="red">#FF0000</color>
     <color name="main">#0e5fa7</color>
+    <color name="lightgray">#D3D3D3</color>
+    <color name="green">#00FF00</color>
+    <color name="colorPrimary">#2196F3</color>       <!-- Blue 500 -->
+    <color name="colorPrimaryDark">#1976D2</color>   <!-- Blue 700 -->
+    <color name="colorAccent">#03A9F4</color>        <!-- Light Blue 500 -->
+    <color name="background">#E3F2FD</color>         <!-- Light Blue Background -->
+
 </resources>

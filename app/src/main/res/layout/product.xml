@@ -31,7 +31,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/totebag" />
+                    android:src="@drawable/headbands" />
 
                 <ImageButton
                     android:id="@+id/backbtn"
@@ -44,7 +44,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="₱55.00"
+                android:text="₱20.00"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:textColor="#000000" />
@@ -52,7 +52,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tote Bag"
+                android:text="Headbands"
                 android:textSize="28dp"
                 android:textStyle="italic"
                 android:textColor="#333333"
@@ -61,7 +61,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Made from secondhand denim pants and other clothes designed with fabric scraps. Can be customized to the customer’s requests. Durable and efficient with pockets while being sustainable and flashy. 55 peso each; 65 peso for additional designs."
+                android:text="Made with fabric scraps and headband bases, designed with buttons. 25 peso for headbands using a base; 20 peso for headbands made from fabric scraps. "
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="#666666" />
@@ -78,6 +78,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
+            android:id="@+id/msg"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -106,6 +107,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/addtocart"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

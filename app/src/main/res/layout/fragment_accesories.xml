@@ -53,19 +53,28 @@
 
                         <ImageView
                             android:id="@+id/accessories1"
-                            android:layout_width="165dp"
+                            android:layout_width="150dp"
                             android:layout_height="165dp"
-                            android:layout_marginLeft="3dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="9dp"
                             android:padding="5dp"
-                            app:srcCompat="@drawable/accessories"/>
+                            app:srcCompat="@drawable/headbands"/>
+                        <TextView
+                            android:id="@+id/topLabel1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Headband"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            android:layout_gravity="top|center_horizontal" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="70dp"
                             android:layout_marginTop="170dp"
-                            android:text="00.0"
+                            android:text="20.0"
                             android:textColor="#FFFFFF"
                             android:textSize="20dp"
                             android:textStyle="bold"/>
@@ -90,19 +99,28 @@
 
                         <ImageView
                             android:id="@+id/accessories2"
-                            android:layout_width="165dp"
-                            android:layout_height="165dp"
-                            android:layout_marginLeft="3dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_width="150dp"
+                            android:layout_height="155dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginLeft="9dp"
                             android:padding="5dp"
                             app:srcCompat="@drawable/bracelet"/>
+                        <TextView
+                            android:id="@+id/topLabel2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bracelet"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            android:layout_gravity="top|center_horizontal" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="70dp"
                             android:layout_marginTop="170dp"
-                            android:text="00.0"
+                            android:text="40.0"
                             android:textColor="#FFFFFF"
                             android:textSize="20dp"
                             android:textStyle="bold"/>
@@ -135,19 +153,29 @@
 
                         <ImageView
                             android:id="@+id/accessories3"
-                            android:layout_width="165dp"
+                            android:layout_width="150dp"
                             android:layout_height="165dp"
-                            android:layout_marginLeft="3dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="9dp"
                             android:padding="5dp"
                             app:srcCompat="@drawable/totebag"/>
+
+                        <TextView
+                            android:id="@+id/topLabel3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Totebag"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            android:layout_gravity="top|center_horizontal" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="70dp"
                             android:layout_marginTop="170dp"
-                            android:text="00.0"
+                            android:text="55.0"
                             android:textColor="#FFFFFF"
                             android:textSize="20dp"
                             android:textStyle="bold"/>
@@ -172,12 +200,21 @@
 
                         <ImageView
                             android:id="@+id/accessories4"
-                            android:layout_width="165dp"
-                            android:layout_height="165dp"
-                            android:layout_marginLeft="3dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_width="150dp"
+                            android:layout_height="145dp"
+                            android:layout_marginTop="25dp"
+                            android:layout_marginLeft="9dp"
                             android:padding="5dp"
-                            app:srcCompat="@drawable/keychain"/>
+                            android:background="@drawable/keychain"/>
+                        <TextView
+                            android:id="@+id/topLabel4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="keychain"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            android:layout_gravity="top|center_horizontal" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -229,12 +266,22 @@
 
                         <ImageView
                             android:id="@+id/accessories5"
-                            android:layout_width="165dp"
+                            android:layout_width="150dp"
                             android:layout_height="165dp"
-                            android:layout_marginLeft="3dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="9dp"
                             android:padding="5dp"
                             app:srcCompat="@drawable/toy"/>
+
+                        <TextView
+                            android:id="@+id/topLabel5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="23dp"
+                            android:layout_gravity="top|center_horizontal"
+                            android:text="Toys"
+                            android:textColor="#FFFFFF"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -277,12 +324,21 @@
 
                         <ImageView
                             android:id="@+id/accessories6"
-                            android:layout_width="165dp"
+                            android:layout_width="150dp"
                             android:layout_height="165dp"
-                            android:layout_marginLeft="3dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="9dp"
                             android:padding="5dp"
                             app:srcCompat="@drawable/clothes"/>
+                        <TextView
+                            android:id="@+id/topLabel6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Clothes"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            android:layout_gravity="top|center_horizontal" />
 
                         <TextView
                             android:layout_width="wrap_content"
