@@ -52,6 +52,7 @@ public class Checkout extends AppCompatActivity {
         recyclerView = findViewById(R.id.cartview);
 
 
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new CartAdapter(cartItems, true, this::updateTotalPrice);
 

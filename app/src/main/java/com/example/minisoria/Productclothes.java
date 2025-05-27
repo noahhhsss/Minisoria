@@ -20,7 +20,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 public class Productclothes extends AppCompatActivity {
 
     private ImageButton backbtn;
-
     private Button buyNowButton;
     private LinearLayout addToCartButton;
     private int quantity = 1;
@@ -28,33 +27,50 @@ public class Productclothes extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.productclothes);  // your clothes layout
+        setContentView(R.layout.productclothes);
 
         backbtn = findViewById(R.id.backbtn);
         buyNowButton = findViewById(R.id.buyNowButton);
         addToCartButton = findViewById(R.id.addtocart);
 
-        backbtn.setOnClickListener(v -> finish());  // or navigate back
-
+        backbtn.setOnClickListener(v -> finish());
         buyNowButton.setOnClickListener(v -> showBottomSheet(false));
         addToCartButton.setOnClickListener(v -> showBottomSheet(true));
     }
 
-    private void showBottomSheet(boolean isAddToCart) {
-        quantity = 1;  // reset quantity on each popup open
-
+    private void showBottomSheet(final boolean isAddToCart) {
         int layoutRes = isAddToCart ? R.layout.popupaddtocartclothes : R.layout.productpopupclothes;
         View view = LayoutInflater.from(this).inflate(layoutRes, null);
-        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
         bottomSheetDialog.setContentView(view);
 
-        TextView quantityText = view.findViewById(R.id.quantityText);
-        TextView decreaseBtn = view.findViewById(R.id.decreaseButton);
-        TextView increaseBtn = view.findViewById(R.id.increaseButton);
+        final TextView quantityText = view.findViewById(R.id.quantityText);
+        final TextView decreaseBtn = view.findViewById(R.id.decreaseButton);
+        final TextView increaseBtn = view.findViewById(R.id.increaseButton);
+        final RadioGroup materialGroup = view.findViewById(R.id.materialGroup);
+        final TextView priceText = view.findViewById(R.id.price);
 
-        RadioGroup materialGroup = view.findViewById(R.id.materialGroup);  // optional, if in layout
+        final RadioButton radioButton1 = view.findViewById(R.id.customizeBtn);
+        final RadioButton radioButton2 = view.findViewById(R.id.cusBtn);
 
+        radioButton1.setText("Per piece");
+        radioButton2.setText("3 for 100");
+
+        final int material1Price = 35;
+        final int material2Price = 100;
+
+        quantity = 1;
         quantityText.setText(String.valueOf(quantity));
+        priceText.setText("₱0");
+        materialGroup.clearCheck();
+
+        materialGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == R.id.customizeBtn) {
+                priceText.setText("₱" + material1Price);
+            } else if (checkedId == R.id.cusBtn) {
+                priceText.setText("₱" + material2Price);
+            }
+        });
 
         increaseBtn.setOnClickListener(v -> {
             quantity++;
@@ -68,32 +84,27 @@ public class Productclothes extends AppCompatActivity {
             }
         });
 
-        int unitPrice = 55;
-
         if (isAddToCart) {
             Button popupAddToCartButton = view.findViewById(R.id.addtocart);
             popupAddToCartButton.setOnClickListener(v -> {
-                int qty = Integer.parseInt(quantityText.getText().toString());
-
-                // Get selected material text or empty if none selected
-                String material = "";
-                if (materialGroup != null) {
-                    int selectedId = materialGroup.getCheckedRadioButtonId();
-                    if (selectedId != -1) {
-                        RadioButton selectedRadio = view.findViewById(selectedId);
-                        material = selectedRadio.getText().toString();
-                    }
+                int selectedId = materialGroup.getCheckedRadioButtonId();
+                if (selectedId == -1) {
+                    Toast.makeText(Productclothes.this, "Please select a size", Toast.LENGTH_SHORT).show();
+                    return;
                 }
+
+                RadioButton selectedMaterialButton = view.findViewById(selectedId);
+                String selectedMaterial = selectedMaterialButton.getText().toString();
+                int unitPrice = selectedId == R.id.customizeBtn ? material1Price : material2Price;
 
                 Cartitem item = new Cartitem(
                         "ClothesUser",
                         "Clothes",
                         String.valueOf(unitPrice),
-                        qty,
-                        material,
+                        quantity,
+                        selectedMaterial,
                         R.drawable.clothes
                 );
-
                 CartManager.addToCart(item);
                 Toast.makeText(Productclothes.this, "Added to cart", Toast.LENGTH_SHORT).show();
                 bottomSheetDialog.dismiss();
@@ -102,27 +113,25 @@ public class Productclothes extends AppCompatActivity {
         } else {
             Button popupBuyNowButton = view.findViewById(R.id.buyNowButton);
             popupBuyNowButton.setOnClickListener(v -> {
-                int qty = Integer.parseInt(quantityText.getText().toString());
-                int totalPrice = unitPrice * qty;
-
-                String material = "";
-                if (materialGroup != null) {
-                    int selectedId = materialGroup.getCheckedRadioButtonId();
-                    if (selectedId != -1) {
-                        RadioButton selectedRadio = view.findViewById(selectedId);
-                        material = selectedRadio.getText().toString();
-                    }
+                int selectedId = materialGroup.getCheckedRadioButtonId();
+                if (selectedId == -1) {
+                    Toast.makeText(Productclothes.this, "Please select a size", Toast.LENGTH_SHORT).show();
+                    return;
                 }
+
+                RadioButton selectedMaterialButton = view.findViewById(selectedId);
+                String selectedMaterial = selectedMaterialButton.getText().toString();
+                int unitPrice = selectedId == R.id.customizeBtn ? material1Price : material2Price;
+                int totalPrice = unitPrice * quantity;
 
                 Intent intent = new Intent(Productclothes.this, Cart.class);
                 intent.putExtra("title", "Clothes");
                 intent.putExtra("price", String.valueOf(unitPrice));
                 intent.putExtra("totalPrice", String.valueOf(totalPrice));
-                intent.putExtra("quantity", qty);
-                intent.putExtra("material", material);
+                intent.putExtra("quantity", quantity);
+                intent.putExtra("material", selectedMaterial);
                 intent.putExtra("imageResId", R.drawable.clothes);
                 startActivity(intent);
-
                 bottomSheetDialog.dismiss();
             });
         }

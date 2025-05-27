@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.minisoria.CartManager;
 import com.example.minisoria.R;
 import com.example.minisoria.model.Cartitem;
 
@@ -105,14 +106,20 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     }
 
     public void decreaseQuantity(int position) {
-        Cartitem item = itemList.get(position);
-        int qty = item.getQuantity();
-        if (qty > 1) {
-            item.setQuantity(qty - 1);
-        } else {
-            itemList.remove(position);
+        if (position >= 0 && position < itemList.size()) {
+            Cartitem item = itemList.get(position);
+            int qty = item.getQuantity();
+            if (qty > 1) {
+                item.setQuantity(qty - 1);
+                notifyItemChanged(position);
+            } else {
+                itemList.remove(position);
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, itemList.size()); // Optional: keeps RecyclerView consistent
+            }
+
+            if (listener != null) listener.onPriceUpdated();
         }
-        notifyDataSetChanged();
-        if (listener != null) listener.onPriceUpdated();
     }
+
 }

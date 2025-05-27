@@ -66,7 +66,7 @@ public class Productkeychain extends AppCompatActivity {
             }
         });
 
-        int unitPrice = 20;
+        int unitPrice = 15;
 
         if (isAddToCart) {
             Button popupAddToCartButton = view.findViewById(R.id.addtocart);

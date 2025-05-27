@@ -76,7 +76,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         User user = userList.get(position);
         holder.tvName.setText(user.getName());
         holder.tvEmail.setText("Email: " + user.getEmail());
-        holder.tvPassword.setText("Password: " + user.getPassword());
+        String maskedPassword = new String(new char[user.getPassword().length()]).replace('\0', '*');
+        holder.tvPassword.setText("Password: " + maskedPassword);
         holder.tvRole.setText("Role: " + user.getRole());
     }
 
@@ -87,7 +88,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
     public void updateList(List<User> newList) {
         userList = newList;
-        userListFull = new ArrayList<>(newList); // keep backup in sync
+        userListFull = new ArrayList<>(newList);
         notifyDataSetChanged();
     }
 

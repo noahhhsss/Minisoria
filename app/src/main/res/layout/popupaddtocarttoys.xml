@@ -23,6 +23,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="₱55.00"
@@ -43,6 +44,38 @@
         android:textStyle="bold"
         android:layout_marginTop="10dp"/>
 
+    <RadioGroup
+        android:id="@+id/materialGroup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/customizeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cornerradius"
+            android:padding="12dp"
+            android:layout_marginTop="16dp"
+            android:button="@drawable/dropdown"
+            android:text="Package 1"
+            android:textSize="15dp"
+            android:textStyle="bold"/>
+
+        <RadioButton
+            android:id="@+id/cusBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cornerradius"
+            android:padding="12dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="2dp"
+            android:button="@drawable/dropdown"
+            android:text="Package 2"
+            android:textSize="15dp"
+            android:textStyle="bold"/>
+
+    </RadioGroup>
 
     <LinearLayout
         android:layout_width="wrap_content"

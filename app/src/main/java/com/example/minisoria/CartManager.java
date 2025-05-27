@@ -7,13 +7,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class CartManager {
-    // Shared cart items list
     public static final List<Cartitem> cartItems = new ArrayList<>();
 
-    // Add item to cart; if same title and material exist, update quantity
+
     public static void addToCart(Cartitem newItem) {
         for (Cartitem item : cartItems) {
-            // Use Objects.equals() to safely compare possibly null materials
             if (item.getTitle().equals(newItem.getTitle()) &&
                     Objects.equals(item.getMaterial(), newItem.getMaterial())) {
                 int updatedQuantity = item.getQuantity() + newItem.getQuantity();
@@ -21,7 +19,7 @@ public class CartManager {
                 return;
             }
         }
-        // Add new item if no matching item found
+
         cartItems.add(newItem);
     }
 
@@ -30,9 +28,20 @@ public class CartManager {
         return cartItems;
     }
 
+
+
     // Clear the cart
     public static void clearCart() {
         cartItems.clear();
     }
+
+    public static void removeFromCart(Cartitem itemToRemove) {
+        // Remove the matching item by title and material
+        cartItems.removeIf(item ->
+                item.getTitle().equals(itemToRemove.getTitle()) &&
+                        Objects.equals(item.getMaterial(), itemToRemove.getMaterial())
+        );
+    }
+
 
 }
