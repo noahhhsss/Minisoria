@@ -49,7 +49,7 @@ public class Admindashboard extends AppCompatActivity {
         acc = findViewById(R.id.acc);
         card = findViewById(R.id.cardorder);
         card1=findViewById(R.id.cardaccount);
-        card2=findViewById(R.id.cardmessage);
+        card2=findViewById(R.id.cardaccesories);
         logout = findViewById(R.id.logout);
         accountCount = findViewById(R.id.textView1);
         textViewOrderCount = findViewById(R.id.textView17);
@@ -80,6 +80,14 @@ public class Admindashboard extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        card2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Admindashboard.this, AdminAddProductActivity.class);
+                startActivity(i);
+            }
+        });
+
         acc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

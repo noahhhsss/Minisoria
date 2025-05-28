@@ -11,7 +11,7 @@
     <string name="title_Logout">Logout</string>
     <string name="Open">Open</string>
     <string name="Close">Close</string>
-    
+
     <string-array name="order">
         <item>ada</item>
     </string-array>

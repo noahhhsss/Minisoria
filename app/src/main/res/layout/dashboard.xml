@@ -112,7 +112,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainerView"
-            android:name="com.example.minisoria.accesories"
+            android:name="com.example.minisoria.AccessoriesFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>

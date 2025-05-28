@@ -73,7 +73,7 @@ public class Dashboardwdrawer extends AppCompatActivity {
         acc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, accesories.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
+                fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, AccessoriesFragment.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
 
             }
         });

@@ -39,8 +39,11 @@
         <activity android:name=".Placeorder"/>
         <activity android:name=".ForgotPassword"/>
         <activity android:name=".SignUp" />
+        <activity android:name=".AdminAddProductActivity"/>
+        <activity android:name=".ProductDetail" />
         <activity android:name=".Splashscreen"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
