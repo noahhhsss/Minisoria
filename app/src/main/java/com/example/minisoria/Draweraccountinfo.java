@@ -160,6 +160,12 @@ public class Draweraccountinfo extends AppCompatActivity {
                 return;
             }
 
+            if (!isStrongPassword(password)) {
+                Toast.makeText(Draweraccountinfo.this, "Password must be at least 8 characters long, and include uppercase, lowercase, number, and special character.", Toast.LENGTH_LONG).show();
+                return;
+            }
+
+
             if (db.updateUser(oldUsername, name, email, password)) {
                 Toast.makeText(Draweraccountinfo.this, "Saved Successfully", Toast.LENGTH_SHORT).show();
 
@@ -226,4 +232,10 @@ public class Draweraccountinfo extends AppCompatActivity {
         super.onPause();
         closedrawer(drawerlayout);
     }
+    private boolean isStrongPassword(String password) {
+        // At least 8 characters, one digit, one upper, one lower, one special character
+        String passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!]).{8,}$";
+        return password.matches(passwordPattern);
+    }
+
 }

@@ -39,22 +39,12 @@
                 android:textStyle="bold"
                 android:text="My Purchase"/>
 
-            <TextView
-                android:id="@+id/recieve"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="70dp"
-                android:textSize="25dp"
-                android:textColor="@color/white"
-                android:layout_marginTop="75dp"
-                android:textStyle="bold"
-                android:text="To Pay"/>
 
             <TextView
                 android:id="@+id/complete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="250dp"
+                android:layout_marginLeft="140dp"
                 android:textSize="25dp"
                 android:textColor="@color/white"
                 android:layout_marginTop="75dp"
@@ -72,7 +62,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
