@@ -24,8 +24,9 @@ import java.util.List;
 
 public class ProductDetail extends AppCompatActivity {
 
-    private LinearLayout addToCartButton;
+    private LinearLayout addToCartButton, attachimage;
     private Button buyNowButton;
+
     private Product product;
     private ImageView btn;
 
@@ -42,10 +43,19 @@ public class ProductDetail extends AppCompatActivity {
         TextView productNameView = findViewById(R.id.productName);
         addToCartButton = findViewById(R.id.addtocart);
         buyNowButton = findViewById(R.id.buyNowButton);
+        attachimage = findViewById(R.id.messageButton);
         TextView productDescriptionView = findViewById(R.id.productDescription);
 
         Intent intent = getIntent();
         product = intent.getParcelableExtra("product");
+
+        attachimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ProductDetail.this, Activitysubmitimage.class);
+                startActivity(i);
+            }
+        });
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -223,23 +233,31 @@ public class ProductDetail extends AppCompatActivity {
 
                     Toast.makeText(ProductDetail.this, "Product added to cart", Toast.LENGTH_SHORT).show();
                 } else {
-                    Intent intent = new Intent(ProductDetail.this, Cart.class); // <-- change here!
-                    intent.putExtra("username", "defaultUser");
-                    intent.putExtra("productName", finalProduct.getName());
-                    intent.putExtra("price", String.format("₱%.2f", selectedPrice));
-                    intent.putExtra("quantity", finalQuantity);
-                    intent.putExtra("material", selectedMaterial);
-                    intent.putExtra("imageResId", R.drawable.keychain);
-                    intent.putExtra("imageUri", finalProduct.getImageUri());
+                    Cartitem newItem = new Cartitem(
+                            "defaultUser", // Replace with SharedPreferences if needed
+                            finalProduct.getName(),
+                            String.format("₱%.2f", selectedPrice),
+                            finalQuantity,
+                            selectedMaterial,
+                            R.drawable.keychain,
+                            Uri.parse(finalProduct.getImageUri())
+                    );
+
+                    CartManager.addToCart(newItem);
+
+                    Intent intent = new Intent(ProductDetail.this, Checkout.class);
                     startActivity(intent);
                     Toast.makeText(ProductDetail.this, "Proceeding to buy", Toast.LENGTH_SHORT).show();
                 }
+
+
                 dialog.dismiss();
             } catch (Exception e) {
                 Toast.makeText(ProductDetail.this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }
         });
+
 
         dialog.show();
     }

@@ -97,7 +97,7 @@ public class Dashboardwdrawer extends AppCompatActivity {
         addtocart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Dashboardwdrawer.this, Checkout.class);
+                Intent intent = new Intent(Dashboardwdrawer.this, Cart.class);
                 startActivity(intent);
             }
         });

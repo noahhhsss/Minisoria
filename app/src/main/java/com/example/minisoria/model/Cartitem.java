@@ -2,7 +2,9 @@ package com.example.minisoria.model;
 
 import android.net.Uri;
 
-public class Cartitem {
+import java.io.Serializable;
+
+public class Cartitem implements Serializable {
     private String username;
     private String title;
     private String price;
@@ -10,7 +12,7 @@ public class Cartitem {
     private int quantity;
     private String material;
     private int imageResId;
-    private Uri imageUri;
+    private transient Uri imageUri;
 
     // ✅ Constructor with imageUri
     public Cartitem(String username, String title, String price, int quantity, String material, int imageResId, Uri imageUri) {

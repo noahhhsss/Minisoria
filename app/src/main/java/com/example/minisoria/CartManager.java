@@ -9,6 +9,11 @@ import java.util.Objects;
 public class CartManager {
     public static final List<Cartitem> cartItems = new ArrayList<>();
 
+    public static void setCartItems(List<Cartitem> newCartItems) {
+        cartItems.clear();
+        cartItems.addAll(newCartItems);
+    }
+
 
     public static void addToCart(Cartitem newItem) {
         for (Cartitem item : cartItems) {

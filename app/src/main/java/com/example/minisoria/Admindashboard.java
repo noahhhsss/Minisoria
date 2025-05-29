@@ -2,7 +2,6 @@ package com.example.minisoria;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.Image;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,7 +28,7 @@ public class Admindashboard extends AppCompatActivity {
 
     private LinearLayout order,acc;
 
-    private CardView card, card1,card2;
+    private CardView card, card1,card2,card3;
 
     private TextView accountCount,textViewOrderCount;
     private DatabaseHelper db;
@@ -50,12 +49,21 @@ public class Admindashboard extends AppCompatActivity {
         card = findViewById(R.id.cardorder);
         card1=findViewById(R.id.cardaccount);
         card2=findViewById(R.id.cardaccesories);
+        card3=findViewById(R.id.cardmessage);
         logout = findViewById(R.id.logout);
         accountCount = findViewById(R.id.textView1);
         textViewOrderCount = findViewById(R.id.textView17);
         db = new DatabaseHelper(this);
         updateAccountCount();
         updateOrderCount();
+
+        card3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Admindashboard.this, Adminattachimage.class);
+                startActivity(i);
+            }
+        });
 
 
 

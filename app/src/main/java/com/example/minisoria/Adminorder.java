@@ -73,7 +73,7 @@ public class Adminorder extends AppCompatActivity {
 
                 boolean updated = db.updateOrderStatusById(orderId, "accepted");
                 if (updated) {
-                    db.insertNotification(username, "Order Accepted", "Your order #" + orderId + " has been accepted.");
+                    db.insertNotification(username, "Order has been proccesed", "Your order " + orderId + " has been proccesed you may now go to our booth to collect.");
                     order.setStatus("accepted");
                     adapter.notifyItemChanged(position);
                     Toast.makeText(Adminorder.this, "Order accepted and notification sent", Toast.LENGTH_SHORT).show();

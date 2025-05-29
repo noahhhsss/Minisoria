@@ -44,6 +44,8 @@
         <activity android:name=".Categories"/>
         <activity android:name=".AdminAddCaricatureActivity"/>
         <activity android:name=".AdminAddFoodActivity"/>
+        <activity android:name=".Adminattachimage"/>
+        <activity android:name=".Activitysubmitimage"/>
         <activity android:name=".Splashscreen"
             android:exported="true">
 
