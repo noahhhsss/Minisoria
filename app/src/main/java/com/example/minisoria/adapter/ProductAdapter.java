@@ -138,10 +138,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     }
 
     // Optional method to update list
-    public void updateList(List<Product> newList) {
-        this.productList = newList;
+    public void updateProducts(List<Product> newProductList) {
+        this.productList = newProductList;
         notifyDataSetChanged();
     }
+
     public void addProduct(Product product) {
         productList.add(product);
         notifyItemInserted(productList.size() - 1);

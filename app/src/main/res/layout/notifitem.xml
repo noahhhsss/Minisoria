@@ -19,7 +19,7 @@
             android:id="@+id/notification_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Order Accepted"
+            android:text="Order has been proccesed"
             android:textColor="@android:color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -28,7 +28,7 @@
             android:id="@+id/notification_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Order #123 has been accepted."
+            android:text="Order #123 has been proccesed you may now go to our booth to collect."
             android:textColor="@android:color/white"
             android:textSize="14sp"
             android:layout_marginTop="4dp" />

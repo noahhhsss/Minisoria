@@ -1,7 +1,5 @@
 package com.example.minisoria;
 
-import static androidx.core.content.ContentProviderCompat.requireContext;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,8 +19,7 @@ import com.example.minisoria.model.Product;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminAddCaricatureActivity extends AppCompatActivity {
-
+public class AdminAddFoodActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
 
     private ImageView imageViewProduct;
@@ -30,7 +27,7 @@ public class AdminAddCaricatureActivity extends AppCompatActivity {
     private EditText editTextMaterial1, editTextMaterial2, editTextMaterial3;
     private EditText editTextMaterialPrice1, editTextMaterialPrice2, editTextMaterialPrice3;
     private Uri selectedImageUri;
-    private final String fixedCategory = "Caricature";
+    private final String fixedCategory = "Food";
     private RecyclerView recyclerViewProducts;
     private ProductAdapter productAdapter;
 
@@ -131,8 +128,7 @@ public class AdminAddCaricatureActivity extends AppCompatActivity {
             ProductRepository.loadProducts(this);
             ProductRepository.addProduct(this, product); // ✅ This persists the new product
 
-            Toast.makeText(this, "Caricature added successfully!", Toast.LENGTH_SHORT).show();
-            finish(); // Close and return to previous screen
+            Toast.makeText(this, "Food added successfully!", Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -176,18 +172,15 @@ public class AdminAddCaricatureActivity extends AppCompatActivity {
         ProductRepository.loadProducts(this);
         List<Product> allProducts = ProductRepository.getProducts();
 
-        List<Product> caricatureList = new ArrayList<>();
+        List<Product> foodList = new ArrayList<>();
         for (Product p : allProducts) {
-            if ("Caricature".equalsIgnoreCase(p.getCategory())) {
-                caricatureList.add(p);
+            if ("Food".equalsIgnoreCase(p.getCategory())) {
+                foodList.add(p);
             }
         }
 
         if (productAdapter != null) {
-            productAdapter.updateProducts(caricatureList); // See fix 2 below
+            productAdapter.updateProducts(foodList); // See fix 2 below
         }
     }
-
-
-
 }

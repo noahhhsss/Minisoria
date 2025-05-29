@@ -31,6 +31,14 @@
             android:textSize="30dp"
             />
 
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reminder: Don't forget to check your notifications!"
+            android:gravity="center"
+            android:textSize="20dp"/>
+
         <Button
                 android:id="@+id/BTN1"
                 android:layout_width="match_parent"

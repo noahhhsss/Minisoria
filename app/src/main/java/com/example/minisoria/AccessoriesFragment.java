@@ -70,8 +70,7 @@ public class AccessoriesFragment extends Fragment {
     public void onResume() {
         super.onResume();
         if (productAdapter != null) {
-            List<Product> updatedList = getAccessoriesProducts();
-            productAdapter.updateList(updatedList);
+            productAdapter.notifyDataSetChanged();
         }
     }
 }

@@ -28,7 +28,7 @@ public class Categories extends AppCompatActivity {
         });
 
         cardFood.setOnClickListener(v -> {
-            Intent intent = new Intent(Categories.this, AdminAddProductActivity.class);
+            Intent intent = new Intent(Categories.this, AdminAddFoodActivity.class);
             startActivity(intent);
         });
 

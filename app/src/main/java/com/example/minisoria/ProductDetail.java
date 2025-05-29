@@ -223,7 +223,7 @@ public class ProductDetail extends AppCompatActivity {
 
                     Toast.makeText(ProductDetail.this, "Product added to cart", Toast.LENGTH_SHORT).show();
                 } else {
-                    Intent intent = new Intent(ProductDetail.this, Checkout.class); // <-- change here!
+                    Intent intent = new Intent(ProductDetail.this, Cart.class); // <-- change here!
                     intent.putExtra("username", "defaultUser");
                     intent.putExtra("productName", finalProduct.getName());
                     intent.putExtra("price", String.format("₱%.2f", selectedPrice));
