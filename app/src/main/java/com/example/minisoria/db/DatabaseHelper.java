@@ -36,7 +36,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "username TEXT, " +
                 "title TEXT, " +
-                "price TEXT, " +          // stored as text for compatibility
+                "price TEXT, " +
                 "quantity INTEGER, " +
                 "material TEXT, " +
                 "imageResId INTEGER, " +
@@ -61,7 +61,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)");
 
         // Products table
-        // Modify create table statement in onCreate() and onUpgrade()
         db.execSQL("CREATE TABLE products (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "name TEXT, " +
@@ -69,12 +68,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "description TEXT, " +
                 "material TEXT, " +            // comma-separated materials
                 "materialPrices TEXT, " +      // comma-separated material prices
-                "imageUri TEXT)");
+                "imageUri TEXT, " +
+                "category TEXT)");             // Added category column
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Handle upgrades carefully to avoid data loss
         if (oldVersion < 5) {
             try {
                 db.execSQL("ALTER TABLE messages ADD COLUMN is_admin INTEGER DEFAULT 0");
@@ -91,14 +90,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     "message TEXT, " +
                     "timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)");
         }
-        if (oldVersion < 9) {  // increment your DB_VERSION to 9
+        if (oldVersion < 9) {
             try {
                 db.execSQL("ALTER TABLE products ADD COLUMN materialPrices TEXT");
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
+            try {
+                db.execSQL("ALTER TABLE products ADD COLUMN category TEXT");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -296,26 +298,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // --- Product methods ---
 
-    public boolean insertProduct(String name, String price, String description, String material, String materialPrices, String imageUri) {
+    public boolean insertProduct(String name, String price, String description, String material, String materialPrices, String imageUri, String category) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("name", name);
         values.put("price", price);
         values.put("description", description);
         values.put("material", material);
-        values.put("materialPrices", materialPrices);  // <-- add this
+        values.put("materialPrices", materialPrices);
         values.put("imageUri", imageUri);
+        values.put("category", category);
 
         long result = db.insert("products", null, values);
         db.close();
         return result != -1;
     }
 
-
     public List<Product> getAllProducts() {
         List<Product> productList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT id, name, price, description, material, materialPrices, imageUri FROM products", null);
+        Cursor cursor = db.rawQuery("SELECT id, name, price, description, material, materialPrices, imageUri, category FROM products", null);
 
         if (cursor.moveToFirst()) {
             do {
@@ -326,6 +328,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 String materialStr = cursor.getString(cursor.getColumnIndexOrThrow("material"));
                 String materialPricesStr = cursor.getString(cursor.getColumnIndexOrThrow("materialPrices"));
                 String imageUri = cursor.getString(cursor.getColumnIndexOrThrow("imageUri"));
+                String category = cursor.getString(cursor.getColumnIndexOrThrow("category"));
 
                 double price = 0;
                 try {
@@ -354,8 +357,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     }
                 }
 
-                // Create Product with both materials and materialPrices
-                Product product = new Product(id, imageUri, name, price, description, materials, materialPrices);
+                // Create Product with all details
+                Product product = new Product(id, imageUri, name, price, description, materials, materialPrices, category);
+
                 productList.add(product);
             } while (cursor.moveToNext());
         }
@@ -364,7 +368,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return productList;
     }
-
 
     public boolean deleteProduct(int productId) {
         SQLiteDatabase db = this.getWritableDatabase();

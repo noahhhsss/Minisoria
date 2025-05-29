@@ -42,6 +42,7 @@
         <activity android:name=".AdminAddProductActivity"/>
         <activity android:name=".ProductDetail" />
         <activity android:name=".Categories"/>
+        <activity android:name=".AdminAddCaricatureActivity"/>
         <activity android:name=".Splashscreen"
             android:exported="true">
 

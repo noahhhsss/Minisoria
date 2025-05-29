@@ -2,6 +2,7 @@ package com.example.minisoria;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.minisoria.adapter.ProductAdapter;
 import com.example.minisoria.model.Product;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AccessoriesFragment extends Fragment {
@@ -32,33 +33,45 @@ public class AccessoriesFragment extends Fragment {
 
         recyclerViewAccessories = view.findViewById(R.id.recyclerViewAccessories);
 
+        // Setup RecyclerView with Grid layout, 2 columns
         int spanCount = 2;
+        recyclerViewAccessories.setLayoutManager(new GridLayoutManager(getContext(), spanCount));
 
-        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), spanCount, GridLayoutManager.VERTICAL, false);
-        recyclerViewAccessories.setLayoutManager(layoutManager);
+        // Load and filter accessories products
+        List<Product> accessoriesList = getAccessoriesProducts();
 
-        ProductRepository.loadProducts(requireContext());
-        List<Product> productList = ProductRepository.getProducts();
-
-        productAdapter = new ProductAdapter(getContext(), productList, false,
-                null,
-                product -> {
-                    Intent intent = new Intent(getContext(), ProductDetail.class);
-                    intent.putExtra("product", product); // product must implement Parcelable
-                    startActivity(intent);
-                });
+        // Initialize adapter using your constructor for user mode with click listener
+        productAdapter = new ProductAdapter(getContext(), accessoriesList, product -> {
+            Intent intent = new Intent(getContext(), ProductDetail.class);
+            intent.putExtra("product", product);
+            startActivity(intent);
+        });
 
         recyclerViewAccessories.setAdapter(productAdapter);
 
         return view;
     }
 
-    // If you want the list to update when fragment resumes (e.g., after adding product)
+    // Helper method to load products and filter by category
+    private List<Product> getAccessoriesProducts() {
+        ProductRepository.loadProducts(requireContext());
+        List<Product> allProducts = ProductRepository.getProducts();
+        List<Product> accessoriesList = new ArrayList<>();
+        for (Product product : allProducts) {
+            if ("Accessories".equalsIgnoreCase(product.getCategory())) {
+                accessoriesList.add(product);
+            }
+        }
+        return accessoriesList;
+    }
+
+    // Refresh the product list when fragment resumes to show newly added products
     @Override
     public void onResume() {
         super.onResume();
         if (productAdapter != null) {
-            productAdapter.notifyDataSetChanged();
+            List<Product> updatedList = getAccessoriesProducts();
+            productAdapter.updateList(updatedList);
         }
     }
 }

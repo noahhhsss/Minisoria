@@ -7,16 +7,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import com.example.minisoria.adapter.ProductAdapter;
-import com.example.minisoria.model.Product;
-import java.util.ArrayList;
-import java.util.List;
 
-public class AdminAddProductActivity extends AppCompatActivity {
+import com.example.minisoria.model.Product;
+
+import java.util.ArrayList;
+
+public class AdminAddCaricatureActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
 
@@ -25,16 +24,13 @@ public class AdminAddProductActivity extends AppCompatActivity {
     private EditText editTextMaterial1, editTextMaterial2, editTextMaterial3;
     private EditText editTextMaterialPrice1, editTextMaterialPrice2, editTextMaterialPrice3;
     private Uri selectedImageUri;
-    private final String fixedCategory = "Accessories";
+    private final String fixedCategory = "Caricature";
 
-
-    private RecyclerView recyclerViewProducts;
-    private ProductAdapter productAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.adminaddproduct);
+        setContentView(R.layout.adminaddproduct); // Use the same layout
 
         imageViewProduct = findViewById(R.id.imageViewProduct);
         editTextProductName = findViewById(R.id.editTextProductName);
@@ -47,29 +43,6 @@ public class AdminAddProductActivity extends AppCompatActivity {
         editTextMaterialPrice2 = findViewById(R.id.editTextMaterialPrice2);
         editTextMaterialPrice3 = findViewById(R.id.editTextMaterialPrice3);
         Button buttonAddProduct = findViewById(R.id.buttonAddProduct);
-
-        recyclerViewProducts = findViewById(R.id.recyclerViewProducts);
-
-        // Load saved products from repository
-        ProductRepository.loadProducts(this);
-        List<Product> productList = ProductRepository.getProducts();
-
-        productAdapter = new ProductAdapter(this, productList, true,
-                (product, position) -> {
-                    // Delete click listener - remove product via repository
-                    ProductRepository.removeProduct(this, product);
-                    productAdapter.notifyItemRemoved(position);
-                    Toast.makeText(this, product.getName() + " deleted", Toast.LENGTH_SHORT).show();
-                },
-                product -> {
-                    // Item click listener
-                    Intent intent = new Intent(this, ProductDetail.class);
-                    intent.putExtra("product", product); // Product must implement Parcelable
-                    startActivity(intent);
-                });
-
-        recyclerViewProducts.setAdapter(productAdapter);
-        recyclerViewProducts.setLayoutManager(new LinearLayoutManager(this));
 
         imageViewProduct.setOnClickListener(v -> openImageChooser());
 
@@ -123,18 +96,14 @@ public class AdminAddProductActivity extends AppCompatActivity {
                     description,
                     materials,
                     prices,
-                    fixedCategory // assuming your Product model supports category
+                    fixedCategory   // Use the declared fixedCategory variable
             );
 
 
-            // Add product to repository (saves internally)
-            ProductRepository.addProduct(this, product);
-            // Notify adapter about new item
-            productAdapter.notifyItemInserted(productAdapter.getItemCount());
-
-            Toast.makeText(this, "Product added!", Toast.LENGTH_SHORT).show();
-
-            clearInputs();
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra("newProduct", product);
+            setResult(RESULT_OK, resultIntent);
+            finish(); // Return to CaricatureFragment
         });
     }
 
@@ -168,19 +137,5 @@ public class AdminAddProductActivity extends AppCompatActivity {
             imageViewProduct.setImageURI(selectedImageUri);
             getContentResolver().takePersistableUriPermission(selectedImageUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
         }
-    }
-
-    private void clearInputs() {
-        editTextProductName.setText("");
-        editTextProductPrice.setText("");
-        editTextProductDescription.setText("");
-        editTextMaterial1.setText("");
-        editTextMaterial2.setText("");
-        editTextMaterial3.setText("");
-        editTextMaterialPrice1.setText("");
-        editTextMaterialPrice2.setText("");
-        editTextMaterialPrice3.setText("");
-        imageViewProduct.setImageResource(R.drawable.roundbluedashboard);
-        selectedImageUri = null;
     }
 }

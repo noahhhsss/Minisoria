@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.minisoria.adapter.ProductAdapter;
 import com.example.minisoria.model.Product;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CaricatureFragment extends Fragment {
@@ -37,16 +38,27 @@ public class CaricatureFragment extends Fragment {
 
         // Load products from shared preferences / repository
         ProductRepository.loadProducts(requireContext());
-        List<Product> productList = ProductRepository.getProducts();
 
         // Set up adapter
-        productAdapter = new ProductAdapter(getContext(), productList, false,
-                null, // No delete listener
+        List<Product> allProducts = ProductRepository.getProducts();
+
+// Filter only caricature products
+        List<Product> caricatureList = new ArrayList<>();
+        for (Product p : allProducts) {
+            if ("Caricature".equalsIgnoreCase(p.getCategory())) {
+                caricatureList.add(p);
+            }
+        }
+
+// Use filtered list in adapter
+        productAdapter = new ProductAdapter(getContext(), caricatureList, false,
+                null,
                 product -> {
                     Intent intent = new Intent(getContext(), ProductDetail.class);
-                    intent.putExtra("product", product); // Make sure Product implements Parcelable
+                    intent.putExtra("product", product);
                     startActivity(intent);
                 });
+
 
         recyclerViewCaricatures.setAdapter(productAdapter);
 

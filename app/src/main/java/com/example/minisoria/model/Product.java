@@ -13,9 +13,11 @@ public class Product implements Parcelable {
     private String description;
     private ArrayList<String> materials;
     private ArrayList<Double> materialPrices;
+    private String category;  // new field
 
     public Product(int id, String imageUri, String name, double price, String description,
-                   ArrayList<String> materials, ArrayList<Double> materialPrices) {
+                   ArrayList<String> materials, ArrayList<Double> materialPrices,
+                   String category) {  // add category parameter
         this.id = id;
         this.imageUri = imageUri;
         this.name = name;
@@ -23,6 +25,7 @@ public class Product implements Parcelable {
         this.description = description;
         this.materials = materials;
         this.materialPrices = materialPrices;
+        this.category = category;
     }
 
     protected Product(Parcel in) {
@@ -33,7 +36,8 @@ public class Product implements Parcelable {
         description = in.readString();
         materials = in.createStringArrayList();
         materialPrices = new ArrayList<>();
-        in.readList(materialPrices, Double.class.getClassLoader());  // read doubles list
+        in.readList(materialPrices, Double.class.getClassLoader());
+        category = in.readString();  // read category
     }
 
     public static final Creator<Product> CREATOR = new Creator<Product>() {
@@ -48,14 +52,15 @@ public class Product implements Parcelable {
         }
     };
 
+    // Getters
     public int getId() { return id; }
     public String getImageUri() { return imageUri; }
     public String getName() { return name; }
     public double getPrice() { return price; }
     public String getDescription() { return description; }
     public ArrayList<String> getMaterials() { return materials; }
-    public ArrayList<Double> getMaterialPrices() { return materialPrices; }  // getter
-
+    public ArrayList<Double> getMaterialPrices() { return materialPrices; }
+    public String getCategory() { return category; }  // new getter
 
     @Override
     public int describeContents() {
@@ -70,7 +75,7 @@ public class Product implements Parcelable {
         parcel.writeDouble(price);
         parcel.writeString(description);
         parcel.writeStringList(materials);
-        parcel.writeList(materialPrices);  // write material prices list
-
+        parcel.writeList(materialPrices);
+        parcel.writeString(category);  // write category
     }
 }

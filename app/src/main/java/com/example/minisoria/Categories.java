@@ -23,7 +23,7 @@ public class Categories extends AppCompatActivity {
         });
 
         cardCaricature.setOnClickListener(v -> {
-            Intent intent = new Intent(Categories.this, Adminaddproductaccessories.class);
+            Intent intent = new Intent(Categories.this, AdminAddCaricatureActivity.class);
             startActivity(intent);
         });
 

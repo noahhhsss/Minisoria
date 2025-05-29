@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,6 +33,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     private final Context context;
     private List<Product> productList;
+    private ActivityResultLauncher<Intent> addCaricatureLauncher;
+
     private final OnDeleteClickListener deleteClickListener;
     private final OnItemClickListener itemClickListener;
     private final boolean isAdmin;
@@ -139,6 +142,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         this.productList = newList;
         notifyDataSetChanged();
     }
+    public void addProduct(Product product) {
+        productList.add(product);
+        notifyItemInserted(productList.size() - 1);
+    }
+
+
 
     static class ProductViewHolder extends RecyclerView.ViewHolder {
         ImageView image;
