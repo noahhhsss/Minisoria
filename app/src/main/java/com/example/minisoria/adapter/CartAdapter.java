@@ -1,5 +1,8 @@
 package com.example.minisoria.adapter;
 
+import static com.example.minisoria.CartManager.cartItems;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.minisoria.CartManager;
 import com.example.minisoria.R;
 import com.example.minisoria.model.Cartitem;
@@ -25,13 +29,19 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     private List<Cartitem> itemList;
     private OnPriceUpdateListener listener;
     private boolean showCheckbox; // <-- added this flag
+    private OnCartItemCheckoutListener checkoutListener;
 
     // Updated constructor to accept showCheckbox
     public CartAdapter(List<Cartitem> itemList, boolean showCheckbox, OnPriceUpdateListener listener) {
         this.itemList = itemList;
         this.listener = listener;
         this.showCheckbox = showCheckbox;
+        this.checkoutListener = checkoutListener;
     }
+    public interface OnCartItemCheckoutListener {
+        void onCheckoutItem(Cartitem item);
+    }
+
 
     @NonNull
     @Override
@@ -45,21 +55,55 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         Cartitem item = itemList.get(position);
 
         // Show or hide checkbox based on showCheckbox flag
+        holder.checkBox.setOnCheckedChangeListener(null); // to prevent unwanted callbacks during recycling
+
         if (showCheckbox) {
             holder.checkBox.setVisibility(View.VISIBLE);
             holder.checkBox.setChecked(item.isChecked());
             holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 item.setChecked(isChecked);
+
+                if (isChecked) {
+                    // If you want only one item to be checked at a time, uncheck others:
+                    for (Cartitem otherItem : itemList) {
+                        if (otherItem != item) {
+                            otherItem.setChecked(false);
+                        }
+                    }
+                    notifyDataSetChanged();
+
+                    // Trigger checkout callback for this single item
+                    if (checkoutListener != null) {
+                        checkoutListener.onCheckoutItem(item);
+                    }
+                }
             });
         } else {
             holder.checkBox.setVisibility(View.GONE);
         }
 
+        if (item.getImageUri() != null) {
+            Glide.with(holder.imageView.getContext())
+                    .load(item.getImageUri())
+                    .into(holder.imageView);
+        } else {
+            holder.imageView.setImageResource(item.getImageResId());
+        }
+        Log.d("CartAdapter", "ImageUri: " + item.getImageUri());
+
+
+
         holder.title.setText(item.getTitle());
         holder.price.setText(item.getPrice());
         holder.material.setText(item.getMaterial());
         holder.quantityText.setText(String.valueOf(item.getQuantity()));
-        holder.imageView.setImageResource(item.getImageResId());
+        if (item.getImageUri() != null) {
+            Glide.with(holder.imageView.getContext())
+                    .load(item.getImageUri())
+                    .into(holder.imageView);
+        } else {
+            holder.imageView.setImageResource(item.getImageResId());
+        }
 
         try {
             float unitPrice = Float.parseFloat(item.getPrice().replace("₱", ""));
@@ -107,6 +151,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     public void decreaseQuantity(int position) {
         if (position >= 0 && position < itemList.size()) {
+
             Cartitem item = itemList.get(position);
             int qty = item.getQuantity();
             if (qty > 1) {
@@ -115,11 +160,13 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             } else {
                 itemList.remove(position);
                 notifyItemRemoved(position);
-                notifyItemRangeChanged(position, itemList.size()); // Optional: keeps RecyclerView consistent
+                CartManager.removeFromCart(item);
+                notifyItemRangeChanged(position, itemList.size()); //   Optional: keeps RecyclerView consistent
             }
 
             if (listener != null) listener.onPriceUpdated();
         }
+
     }
 
 }

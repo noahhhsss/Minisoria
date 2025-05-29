@@ -17,7 +17,7 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DBNAME = "UserDB.db";
-    private static final int DB_VERSION = 8;
+    private static final int DB_VERSION = 9;
 
     public DatabaseHelper(Context context) {
         super(context, DBNAME, null, DB_VERSION);
@@ -60,13 +60,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "message TEXT, " +
                 "timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)");
 
-        // Products table: NOTE added 'description' column here!
+        // Products table
+        // Modify create table statement in onCreate() and onUpgrade()
         db.execSQL("CREATE TABLE products (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "name TEXT, " +
-                "price TEXT, " +             // stored as text for consistency
-                "description TEXT, " +       // added description
-                "material TEXT, " +
+                "price TEXT, " +
+                "description TEXT, " +
+                "material TEXT, " +            // comma-separated materials
+                "materialPrices TEXT, " +      // comma-separated material prices
                 "imageUri TEXT)");
     }
 
@@ -89,17 +91,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     "message TEXT, " +
                     "timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)");
         }
-        if (oldVersion < 8) {
-            // Create products table if it doesn't exist yet
-            db.execSQL("CREATE TABLE IF NOT EXISTS products (" +
-                    "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    "name TEXT, " +
-                    "price TEXT, " +
-                    "description TEXT, " +
-                    "material TEXT, " +
-                    "imageUri TEXT)");
-        }
+        if (oldVersion < 9) {  // increment your DB_VERSION to 9
+            try {
+                db.execSQL("ALTER TABLE products ADD COLUMN materialPrices TEXT");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
+
+        }
     }
 
     // --- User methods ---
@@ -296,13 +296,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // --- Product methods ---
 
-    public boolean insertProduct(String name, String price, String description, String material, String imageUri) {
+    public boolean insertProduct(String name, String price, String description, String material, String materialPrices, String imageUri) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("name", name);
         values.put("price", price);
         values.put("description", description);
         values.put("material", material);
+        values.put("materialPrices", materialPrices);  // <-- add this
         values.put("imageUri", imageUri);
 
         long result = db.insert("products", null, values);
@@ -314,7 +315,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public List<Product> getAllProducts() {
         List<Product> productList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT id, name, price, description, material, imageUri FROM products", null);
+        Cursor cursor = db.rawQuery("SELECT id, name, price, description, material, materialPrices, imageUri FROM products", null);
+
         if (cursor.moveToFirst()) {
             do {
                 int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
@@ -322,6 +324,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 String priceStr = cursor.getString(cursor.getColumnIndexOrThrow("price"));
                 String description = cursor.getString(cursor.getColumnIndexOrThrow("description"));
                 String materialStr = cursor.getString(cursor.getColumnIndexOrThrow("material"));
+                String materialPricesStr = cursor.getString(cursor.getColumnIndexOrThrow("materialPrices"));
                 String imageUri = cursor.getString(cursor.getColumnIndexOrThrow("imageUri"));
 
                 double price = 0;
@@ -339,14 +342,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     }
                 }
 
-                Product product = new Product(id, imageUri, name, price, description, materials);
+                // Convert comma-separated materialPrices string to list
+                ArrayList<Double> materialPrices = new ArrayList<>();
+                if (materialPricesStr != null && !materialPricesStr.isEmpty()) {
+                    for (String s : materialPricesStr.split(",")) {
+                        try {
+                            materialPrices.add(Double.parseDouble(s.trim()));
+                        } catch (NumberFormatException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
+                // Create Product with both materials and materialPrices
+                Product product = new Product(id, imageUri, name, price, description, materials, materialPrices);
                 productList.add(product);
             } while (cursor.moveToNext());
         }
+
         cursor.close();
         db.close();
         return productList;
     }
+
 
     public boolean deleteProduct(int productId) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -354,5 +372,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return rows > 0;
     }
-
 }

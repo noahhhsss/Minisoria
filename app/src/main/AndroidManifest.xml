@@ -41,6 +41,7 @@
         <activity android:name=".SignUp" />
         <activity android:name=".AdminAddProductActivity"/>
         <activity android:name=".ProductDetail" />
+        <activity android:name=".Categories"/>
         <activity android:name=".Splashscreen"
             android:exported="true">
 

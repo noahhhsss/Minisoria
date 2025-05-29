@@ -3,6 +3,7 @@ package com.example.minisoria;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -90,17 +91,21 @@ public class Cart extends AppCompatActivity {
     private void handleIntent(Intent intent) {
         if (intent != null && intent.hasExtra("title")) {
             String title = intent.getStringExtra("title");
+
             String price = intent.getStringExtra("price");
             String material = intent.getStringExtra("material");
             int quantity = intent.getIntExtra("quantity", 1);
-            int imageResId = intent.getIntExtra("imageResId", R.drawable.headbands);
+            String imageUriString = intent.getStringExtra("imageUri");
 
-            Log.d("Checkout", "Received material: " + material);  // Debug log
-
+            int imageResId = R.drawable.keychain;
+            Uri imageUri = null;
+            if (imageUriString != null && !imageUriString.isEmpty()) {
+                imageUri = Uri.parse(imageUriString);
+            }
             SharedPreferences prefs = getSharedPreferences("user_prefs", MODE_PRIVATE);
             String username = prefs.getString("username", "defaultUser");
 
-            Cartitem newItem = new Cartitem(username, title, price, quantity, material, imageResId);
+            Cartitem newItem = new Cartitem(username, title, price, quantity, material, imageResId, imageUri);
             CartManager.addToCart(newItem);
             adapter.notifyDataSetChanged();
         }

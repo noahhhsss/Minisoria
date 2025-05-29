@@ -83,7 +83,7 @@ public class Admindashboard extends AppCompatActivity {
         card2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Admindashboard.this, AdminAddProductActivity.class);
+                Intent i = new Intent(Admindashboard.this, Categories.class);
                 startActivity(i);
             }
         });

@@ -7,28 +7,33 @@ import java.util.ArrayList;
 
 public class Product implements Parcelable {
     private int id;
-    private String imageUri;   // changed from int imageRes
+    private String imageUri;
     private String name;
     private double price;
     private String description;
     private ArrayList<String> materials;
+    private ArrayList<Double> materialPrices;
 
-    public Product(int id, String imageUri, String name, double price, String description, ArrayList<String> materials) {
+    public Product(int id, String imageUri, String name, double price, String description,
+                   ArrayList<String> materials, ArrayList<Double> materialPrices) {
         this.id = id;
         this.imageUri = imageUri;
         this.name = name;
         this.price = price;
         this.description = description;
         this.materials = materials;
+        this.materialPrices = materialPrices;
     }
 
     protected Product(Parcel in) {
         id = in.readInt();
-        imageUri = in.readString();  // changed from readInt()
+        imageUri = in.readString();
         name = in.readString();
         price = in.readDouble();
         description = in.readString();
         materials = in.createStringArrayList();
+        materialPrices = new ArrayList<>();
+        in.readList(materialPrices, Double.class.getClassLoader());  // read doubles list
     }
 
     public static final Creator<Product> CREATOR = new Creator<Product>() {
@@ -44,11 +49,13 @@ public class Product implements Parcelable {
     };
 
     public int getId() { return id; }
-    public String getImageUri() { return imageUri; }  // updated getter
+    public String getImageUri() { return imageUri; }
     public String getName() { return name; }
     public double getPrice() { return price; }
     public String getDescription() { return description; }
     public ArrayList<String> getMaterials() { return materials; }
+    public ArrayList<Double> getMaterialPrices() { return materialPrices; }  // getter
+
 
     @Override
     public int describeContents() {
@@ -58,10 +65,12 @@ public class Product implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(id);
-        parcel.writeString(imageUri);  // changed from writeInt()
+        parcel.writeString(imageUri);
         parcel.writeString(name);
         parcel.writeDouble(price);
         parcel.writeString(description);
         parcel.writeStringList(materials);
+        parcel.writeList(materialPrices);  // write material prices list
+
     }
 }
